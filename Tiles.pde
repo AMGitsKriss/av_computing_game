@@ -76,7 +76,7 @@ class Tiles {
   }
   
   //Assigning the values from the Switch statement
-  private void assignTile(String _dir, String _file, boolean _solid){
+  private void assignType(String _dir, String _file, boolean _solid){
     dir = _dir;
     file = _file;
     solid = _solid;
