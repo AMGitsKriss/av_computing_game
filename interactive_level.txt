@@ -1,0 +1,5 @@
+WE SHOULD BE IGNORING THIS 			ln 1: Comment | ln 2: y, x pos | ln 3: turn red | ln 4: turn green | ln 5: turn blue
+34	10
+31	7	31	8	31	9	31	10	31	11
+0	0
+23	5	23	6

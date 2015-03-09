@@ -1,0 +1,55 @@
+Basic Player & graphic (grey man)
+Horizontal movement & Animation
+Basic level tile grid - Solid blocks
+
+Basic Collision Detection & Gravity
+
+Jump cooldown?
+	Every time colliding with floor BECOMES true, start a timer?
+Player color
+	New colour should reload grey files, or undo the red?
+// Red:	164, 3, 43
+// Green:	63, 109, 27
+// Blue: 	3, 94, 164
+//Grey:		207, 207, 207
+
+	translate(-player.pos.x + width/2, -player.pos.y + height/2)
+	Keep player in middle of screen?
+
+Basic level tile grid - transparent blocks
+Debug layer
+Scrolling world/level
+Semi-solid blocks/colour interactivity restrictions
+Proximity detection
+Envorinment buttons & button interactivity
+Config file - Load world from this!
+Button interaction changes player colour - RED|GREEN|BLUE
+Button interaction changes block colour - RED|GREEN|BLUE|GREY
+Tiles/blocks of varying shapes
+
+<------------------------ Final Level Planning (kinda ongoing)
+
+manipulable blast door
+World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
+manipulable doors effected by gravity (when grey?)
+Mouse interaction to change SOME block shape/pos
+Basic texturing
+Restrict interaction to "manipulator" conditional
+manipulable blocks
+?Manipulable chests?
+Destructable boxes/chests & restrict destruction to proximity detection & "sword" conditional
+
+
+
+Manipulator, Weapon, Torch (not implimented yet) UI
+
+Monsters/Aliens/Some Kinda Enemy
+
+Everything dark (except radius around the player)
+Toggleable darkness (for debug | #cheatz)
+Torch (Attached to player boolean | Effected by gravity | Rotation SHOULD NOT persist)
+
+Sound effects
+
+
+

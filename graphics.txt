@@ -1,0 +1,10 @@
+multiple of 32 tiles
+
+Player sprites
+generic floor
+generic wall
+environment changer button panels
+player changer button panels
+forcefield
+door
+manipulatable blast door
