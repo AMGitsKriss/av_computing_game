@@ -1,3 +1,4 @@
-# av_computing_game
+# AV Computing Game
 
 Built using Processing
+- Does not include graphic assets
