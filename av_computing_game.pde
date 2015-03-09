@@ -87,11 +87,10 @@ void mousePressed(){
       if(keys.ascii[TAB]){ 
         world[(mouseY-transY)/32][(mouseX-transX)/32] = new Tiles(tileIndex, player.currentCol);
       }
-      
-    //If out of bounds
-    } else {
-      println("Oops. Went out of bounds.");
     }
+  //If out of bounds
+  } else {
+    println("Oops. Went out of bounds.");
   }
   
   
