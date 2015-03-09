@@ -26,7 +26,7 @@ class TilesChange {
     construct(green, "green");
     construct(blue, "blue");
   }
-  void construct(int[] _array, String _col){
+  private void construct(int[] _array, String _col){
     for(int i=0;i<_array.length;i+=2){
       int temp1 = _array[i+1]; //array's i+1 = y
       int temp2 = _array[i];  //arrays i = x
