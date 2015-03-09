@@ -19,36 +19,21 @@ class TilesChange {
   }
   
   void update(){
-    
-    //TODO - Condense into a single loop called 3 times by a function
-    
+
     //TODO - Possible timer after each itteration to give a gradual-change visual effect?
     
-    for(int i=0;i<red.length;i+=2){
-      int temp1 = red[i+1];
-      int temp2 = red[i];
-      String temp3 = "red";
-      world[temp1][temp2].col = temp3;
-      PImage[] temp4 = change.spriteArray(temp3, world[temp1][temp2].dir, world[temp1][temp2].file);
-      world[temp1][temp2].img = temp4[0];
-    }
-    
-    for(int i=0;i<green.length;i+=2){
-      int temp1 = green[i+1];
-      int temp2 = green[i];
-      String temp3 = "green";
-      world[temp1][temp2].col = temp3;
-      PImage[] temp4 = change.spriteArray(temp3, world[temp1][temp2].dir, world[temp1][temp2].file);
-      world[temp1][temp2].img = temp4[0];
-    }
-    
-    for(int i=0;i<blue.length;i+=2){
-      int temp1 = blue[i+1];
-      int temp2 = blue[i];
-      String temp3 = "blue";
-      world[temp1][temp2].col = temp3;
-      PImage[] temp4 = change.spriteArray(temp3, world[temp1][temp2].dir, world[temp1][temp2].file);
-      world[temp1][temp2].img = temp4[0];
+    construct(red, "red");
+    construct(green, "green");
+    construct(blue, "blue");
+  }
+  void construct(int[] _array, String _col){
+    for(int i=0;i<_array.length;i+=2){
+      int temp1 = _array[i+1]; //array's i+1 = y
+      int temp2 = _array[i];  //arrays i = x
+      world[temp1][temp2].col = _col; //setting tile colour to _col
+      //redrawing the sprites
+      PImage[] temp3 = change.spriteArray(_col, world[temp1][temp2].dir, world[temp1][temp2].file);
+      world[temp1][temp2].img = temp3[0];
     }
   }
 }
