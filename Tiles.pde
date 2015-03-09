@@ -6,8 +6,6 @@ class Tiles {
   PImage img;
   String dir, file;
   
-  //TODO - Replace with Switch Statement and an assign(dir, file, solid) function.
-  
   Tiles(int _type, String _c){
     type = _type;
     col = _c; 
@@ -17,79 +15,46 @@ class Tiles {
     
     //Assigning image directories to types
     
-    //Empty backdrop
-    if(type == 0){
-      dir = "graphics/world-tiles";
-      file = "blank_tile";
-      solid = false;
-    }
-    if(type == 1){
-      dir = "graphics/world-tiles";
-      file = "backdrop_steel";
-      solid = false;
-    }
-    //Steel Tile
-    else if(type == 2){
-      dir = "graphics/world-tiles"; 
-      file = "plain_steel";
-      solid = true;
-    }
-    //Force Field
-    else if(type == 3){
-      dir = "graphics/force-fields";
-      file = "force_shield_1";
-      solid = false;
-    }
-    //Backgroudn Change Button
-    else if(type == 4){
-      dir = "graphics/background-tiles";
-      file = "background_change";
-      solid = false;
-    }
-    //Player Changer Button
-    else if(type == 5){
-      dir = "graphics/background-tiles";
-      file = "player_change";
-      solid = false;
-    }
-    //Button
-    else if(type == 6){
-      dir = "graphics/";
-      file = "button";
-      solid = false;
-    }
-    //Glass
-    else if(type == 7){
-      dir = "graphics/world-tiles";
-      file = "glass";
-      solid = true;
-    }
-    //"Red Access Only"
-    else if(type == 8){
-      dir = "graphics/background-tiles";
-      file = "sign_1";
-      solid = false;
-    }
-    //"Blue Access Only"
-    else if(type == 9){
-      dir = "graphics/background-tiles";
-      file = "sign_2";
-      solid = false;
-    }
-    //"Green Access Only"
-    else if(type == 10){
-      dir = "graphics/background-tiles";
-      file = "sign_3";
-      solid = false;
-    }
-    //Horiz Blast Door
-    else if(type == 11){
-      dir = "graphics/horizontal-blastdoor";
-      file = "blastdoor_1";
-      solid = true;
+    switch(type) {
+      
+      case 0: //Empty backdrop
+        assignType("graphics/world-tiles", "blank_tile", false);
+        break;
+      case 1: //Steel backdrop
+        assignType("graphics/world-tiles", "backdrop_steel", false);
+        break;
+      case 2: //Steel tile
+        assignType("graphics/world-tiles", "plain_steel", true);
+        break;
+      case 3: //Force field
+        assignType("graphics/force-fields", "force_shield_1", false);
+        break;
+      case 4: //Button to change tile colour
+        assignType("graphics/background-tiles", "background_change", false);
+        break;
+      case 5: //Player changer button
+        assignType("graphics/background-tiles", "player_change", false);
+        break;
+      case 6: //Plain button
+        assignType("graphics", "button", false);
+        break;
+      case 7: //Glass
+        assignType("graphics/world-tiles", "glass", true);
+        break;
+      case 8: //"Red Access Only"
+        assignType("graphics/background-tiles", "sign_1", false);
+        break;
+      case 9: //"Blue Access Only"
+        assignType("graphics/background-tiles", "sign_2", false);
+        break;
+      case 10:  //"Green Access Only"
+        assignType("graphics/background-tiles", "sign_3", false);
+        break;
+      case 11:  //horizontal blast door
+        assignType("graphics/horizontal-blastdoor", "blastdoor_1", true);
+        break;
     }
 
-    
     //Assigning Colours
     if(col == "red"){
       // Handing the colour changer the desired colour, directory, and file name.
@@ -108,7 +73,13 @@ class Tiles {
       PImage[] temp = change.loadFiles(dir, file);
       img = temp[0];
     }
-
+  }
+  
+  //Assigning the values from the Switch statement
+  private void assignTile(String _dir, String _file, boolean _solid){
+    dir = _dir;
+    file = _file;
+    solid = _solid;
   }
   
   //TODO - Allow for animated tiles
