@@ -1,7 +1,12 @@
 class LevelSave{
+  int type;
+  String col;
+  PrintWriter output;
+  //put array into txt
   
   LevelSave(){
     //Constructor
+    update();
   }
   
   /*
@@ -13,5 +18,21 @@ class LevelSave{
   interactive_level.txt likely won't need interacting with. An easy way to build/edit this 
   file? Probably a seperate smaller program.
   */
+  
+  void update(){
+    output = createWriter("savedLevel.txt");
+//    world = new Tiles[tiles.length][tiles[0].length];
+    for(int y = 0; y < world.length; y++){
+      for(int x = 0; x < world[y].length; x++){
+
+        output.print(world[y][x].type + "" + TAB);  // Write the coordinate to the file
+        
+      }
+      println(" ");
+    }
+    output.flush();  // Writes the remaining data to the file
+    output.close();  // Finishes the file
+  }
+  
   
 }

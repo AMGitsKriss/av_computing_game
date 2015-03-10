@@ -20,6 +20,8 @@ void setup(){
   
   //Load the level
   LevelLoad load = new LevelLoad();
+  //create a new file in dir
+  LevelSave save = new LevelSave();
   
   //TODO - Allow map-saving also.
   
