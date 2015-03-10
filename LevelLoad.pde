@@ -53,7 +53,7 @@ class LevelLoad{
         colour based on said char. 
         */
         char t;
-        String temp = colours[y][x];
+        String temp;
 //        println(colours[y][x]);
         t = colours[y][x].charAt(0);
         if(t == 'r') temp = "red";
