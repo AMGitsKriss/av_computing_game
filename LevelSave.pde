@@ -1,7 +1,7 @@
 class LevelSave{
   int type;
   String col;
-  PrintWriter output;
+  PrintWriter outputType, outputCol;
   //put array into txt
   
   LevelSave(){
@@ -20,18 +20,25 @@ class LevelSave{
   */
   
   void update(){
-    output = createWriter("savedLevel.txt");
-//    world = new Tiles[tiles.length][tiles[0].length];
+    outputType = createWriter("map_tiles.txt");
+    outputCol = createWriter("map_colours.txt");
+    
     for(int y = 0; y < world.length; y++){
       for(int x = 0; x < world[y].length; x++){
-
-        output.print(world[y][x].type + "" + TAB);  // Write the coordinate to the file
-        
+        outputType.print(world[y][x].type);  // Write the type to the file
+        outputCol.print(world[y][x].col.charAt(0));  // Write the colour to the file
+        if(x!=world[y].length-1){ 
+          outputType.print(TAB);
+          outputCol.print(TAB);
+        }
       }
-      println(" ");
+      outputType.println();
+      outputCol.println();
     }
-    output.flush();  // Writes the remaining data to the file
-    output.close();  // Finishes the file
+   // outputType.flush();  //Writes the remaining data to the file
+    //outputCol.flush();
+    outputType.close();  //Finishes the file
+    outputCol.close();
   }
   
   

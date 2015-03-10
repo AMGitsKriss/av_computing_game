@@ -14,6 +14,7 @@ class LevelLoad{
     //loading map arrays
     String[] temp_tiles = loadStrings("map_tiles.txt");
     String[] temp_colours = loadStrings("map_colours.txt");
+//    println(temp_colours);
     String[] temp_interactive = loadStrings("interactive_level.txt");
   
     //declaring relevant 2D arrays
@@ -52,7 +53,8 @@ class LevelLoad{
         colour based on said char. 
         */
         char t;
-        String temp;
+        String temp = colours[y][x];
+//        println(colours[y][x]);
         t = colours[y][x].charAt(0);
         if(t == 'r') temp = "red";
         else if(t == 'g') temp = "green";
