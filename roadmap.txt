@@ -29,7 +29,7 @@ Tiles/blocks of varying shapes
 
 <------------------------ Final Level Planning (kinda ongoing)
 
-manipulable blast door
+Manipulable blast door
 World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
 manipulable doors effected by gravity (when grey?)
 Mouse interaction to change SOME block shape/pos
