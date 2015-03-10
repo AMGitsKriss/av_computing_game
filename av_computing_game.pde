@@ -43,12 +43,17 @@ void draw(){
   transY = floor(-player.pos.y + height/2);
   translate(transX, transY);
   
-  //TODO - Only draw tiles that are on the screen
-  
+  //Grabbing the range of tiles on the screen. Only tiles within these bounds
+  //will be rendered.
+  int var1 = drawRange(player.y, 8, world.length),
+      var2 = drawRange(player.y, -8, world.length),
+      var3 = drawRange(player.x, 13, world[0].length),
+      var4 = drawRange(player.x, -13, world[0].length);
+      
   //Redrawing the world from bottom-right to top left.
   //This allows for graphics larger than the tile to be drawn properly
-  for(int y = world.length-1; y >= 0 ; y--){
-    for(int x = world[y].length-1; x >= 0; x--){
+  for(int y = var1; y >= var2 ; y--){
+    for(int x = var3; x >= var4; x--){
       //get tile's colour & draw it
         image(world[y][x].img, x*32, y*32);
         //TODO - Put another (uncoloured) image here if one exists? A decoration layer.
@@ -65,6 +70,13 @@ void draw(){
     key = 0;
     setup();
   }
+}
+
+int drawRange(int _pos, int _var, int _length){
+  int value = (_pos/32) + _var;
+  if(value < 0) value = 0;
+  else if(value > _length-1) value = _length-1;
+  return value;
 }
 
 void mousePressed(){
