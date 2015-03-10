@@ -1,6 +1,7 @@
 class Player{
   //Get path, store array of paths, store array of images.
   PImage sprites[]; 
+  PImage pressE;
   char lastPressed; //last directional key pressed to remember the faced direction
   String directory, currentCol; //player sprite directory and their current colour
   Timer jumpCD; //cooldown on player jumping
@@ -13,6 +14,7 @@ class Player{
   //Recieves start pos, and folder containing instance's sprites. Allows each instance
   //to have it's own sprite set. Is not set up to allow each to have independant control.
   Player(float _x, float _y, String _dir){
+    pressE = loadImage("graphics/misc/press_e.png");
     directory = _dir;
     pos = new PVector(_x, _y);
     jumpCD = new Timer(600);
@@ -45,22 +47,32 @@ class Player{
     sprites = change.spriteArray(currentCol, directory, "");
   }
   
+  void showInteractButton(){
+    image(pressE, x-20, y-60);
+  }
+  
   //TODO - This function is a mess. Condesnse it into smaller functions.
   void update(){
-    if(colliding("interactive_player") && keys.ascii[101]){
-      String temp = world[floor(y/32)-2][floor(x/32)-1].col;
-      if(temp == "red") playerRed();
-      if(temp == "green") playerGreen();
-      if(temp == "blue") playerBlue();
+    if(colliding("interactive_player")){
+      showInteractButton();
+      if(keys.ascii[101]){
+        String temp = world[floor(y/32)-2][floor(x/32)-1].col;
+        showInteractButton();
+        if(temp == "red") playerRed();
+        if(temp == "green") playerGreen();
+        if(temp == "blue") playerBlue();
+      }
     }
     
-    if(colliding("interactive_level") && keys.ascii[101]){
-      
-      //TODO - FIND WHICH CHANGE WE NEED TO CALL  -  int(x/32), int(y/32)
-      for(int i = 0; i < tilesChange.length; i++){
-        if(tilesChange[i].x == x/32 && tilesChange[i].y == y/32){
-          tilesChange[i].update();
-          break;
+    if(colliding("interactive_level")){
+      showInteractButton();
+      if(keys.ascii[101]){
+        //TODO - FIND WHICH CHANGE WE NEED TO CALL  -  int(x/32), int(y/32)
+        for(int i = 0; i < tilesChange.length; i++){
+          if(tilesChange[i].x == x/32 && tilesChange[i].y == y/32){
+            tilesChange[i].update();
+            break;
+          }
         }
       }
     }
