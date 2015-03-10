@@ -20,8 +20,10 @@ void setup(){
   
   //Load the level
   LevelLoad load = new LevelLoad();
+
+
   //create a new file in dir
-  LevelSave save = new LevelSave();
+//  LevelSave save = new LevelSave();
   
   //TODO - Allow map-saving also.
   
@@ -47,10 +49,10 @@ void draw(){
   
   //Grabbing the range of tiles on the screen. Only tiles within these bounds
   //will be rendered.
-  int var1 = drawRange(player.y, 8, world.length),
-      var2 = drawRange(player.y, -8, world.length),
-      var3 = drawRange(player.x, 13, world[0].length),
-      var4 = drawRange(player.x, -13, world[0].length);
+  int var1 = drawRange(player.y, 10, world.length),
+      var2 = drawRange(player.y, -10, world.length),
+      var3 = drawRange(player.x, 15, world[0].length),
+      var4 = drawRange(player.x, -15, world[0].length);
       
   //Redrawing the world from bottom-right to top left.
   //This allows for graphics larger than the tile to be drawn properly
