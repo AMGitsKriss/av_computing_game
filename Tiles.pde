@@ -1,9 +1,9 @@
 class Tiles {
   
-  int type;
+  int type, index = 0;
   String col;
   boolean solid;
-  PImage img;
+  PImage[] img;
   String dir, file;
   
   Tiles(int _type, String _c){
@@ -54,25 +54,34 @@ class Tiles {
         assignType("graphics/horizontal-blastdoor", "blastdoor_1", true);
         break;
     }
-
+    
+    //need to put animate here before assigned colours
+    if(type==3){
+      dir = "graphics/force-fields";
+      String[] file = {"force_shield_1","force_shield_2","force_shield_3"};
+      
+      img = change.loadFiles(dir, file[index]);
+    }
+    
     //Assigning Colours
     if(col == "red"){
       // Handing the colour changer the desired colour, directory, and file name.
-      PImage[] temp = change.spriteArray("red", dir, file);
-      img = temp[0];
+    img = change.spriteArray("red", dir, file);
+      //img = temp[0];
     }
     else if(col == "green"){
-      PImage[] temp = change.spriteArray("green", dir, file);
-      img = temp[0];
+    img = change.spriteArray("green", dir, file);
+      //img = temp[0];
     }
     else if(col == "blue"){
-      PImage[] temp = change.spriteArray("blue", dir, file);
-      img = temp[0];
+    img = change.spriteArray("blue", dir, file);
+    ////img = temp[0];
     }
     else {
-      PImage[] temp = change.loadFiles(dir, file);
-      img = temp[0];
+    img = change.loadFiles(dir, file);
+      //img = temp[0];
     }
+    
   }
   
   //Assigning the values from the Switch statement
@@ -83,5 +92,10 @@ class Tiles {
   }
   
   //TODO - Allow for animated tiles
+  void animate(){
+    if(frameCount % 10 == 0) index += 1;
+    if(index >= img.length) index = 0;
+    println("index+"+index);
+  }
   
 }

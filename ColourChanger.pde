@@ -38,7 +38,7 @@ class ColourChanger {
     return sprites;
   }
   
-  private PImage[] loadFiles(String _dir, String _fileName) {
+  PImage[] loadFiles(String _dir, String _fileName) {
     file = new File(dataPath(sketchPath+"/"+_dir));
     files = file.list();
     PImage[] sprites;
