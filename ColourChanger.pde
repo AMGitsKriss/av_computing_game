@@ -21,11 +21,12 @@ class ColourChanger {
   color blueInverter = color(184, 93, 23);
 //  color blue = color(23, 114, 184);  <-- Actual colour value
   
+  
+  
   //Reloading files then calling the colour change function. Called from outside.
   PImage[] spriteArray(String _col, String _dir, String _file){
     
     color tempCol;
-    
     PImage[] sprites = loadFiles(_dir, _file); 
     
     if (_col == "red")          tempCol = redInverter;
@@ -76,7 +77,7 @@ class ColourChanger {
     }
     return sprites;
   }
-
+  
   //this function isn't called directly from outside.
   private PImage colourChange(PImage pic, color handedColour){
 

@@ -51,7 +51,7 @@ class Tiles {
         assignType("graphics/background-tiles", "sign_3", false);
         break;
       case 11:  //horizontal blast door
-        assignType("graphics/horizontal-blastdoor", "blastdoor_1", true);
+        assignType("graphics/horizontal-blastdoor", "", true);
         break;
     }
     
@@ -88,19 +88,11 @@ class Tiles {
   //TODO - Allow for animated tiles
   void animate(){
     if(frameCount % 5 == 0){ 
-      index ++;
+      if(index < img.length-1){
+        index ++;
+      } else {
+        index = 0;
+      }
     }
-    if(index >= 2) index = 0;
-    
-    /*
-    //need to put animate here before assigned colours
-    if(type==3){
-      dir = "graphics/force-fields";
-      String[] file = {"force_shield_1","force_shield_2","force_shield_3"};
-      
-      img = change.loadFiles(dir, file[index]);
-    }
-    */
   }
-  
 }

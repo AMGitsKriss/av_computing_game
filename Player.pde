@@ -207,17 +207,17 @@ class Player{
     //MULTI-BLOCK TILE COLLISON
     //Horizontal
     if(_dir == "horiz_left" && (world[floor(y/32)+1][floor(x/32)-2].type == 11 || world[floor(y/32)+1][floor(x/32)-1].type == 11 )){
-      //TODO - Fix this when Anna's done.
-/*      
+      //TODO - Fix this when Anna's done.  
+     println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
       if(world[floor(y/32)+1][floor(x/32)-2].index >= 1){ //If animation index is partially open && stood on right-hand tile 
         //TODO - REPLACE 1 ABOVE WITH CORRECT VALUE
-        return false;
+        return true;
       }
       else if(world[floor(y/32)+1][floor(x/32)-1].index >= 2){ //If animation index is fully open && stood on left-hand tile
       //TODO - REPLACE 2 ABOVE WITH CORRECT VALUE
-        return false;
+        return true;
       }
-*/
+
       //pos.x+=1;
       return true;
     }
