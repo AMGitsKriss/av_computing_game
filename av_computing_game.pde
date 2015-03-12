@@ -59,7 +59,9 @@ void draw(){
   for(int y = var1; y >= var2 ; y--){
     for(int x = var3; x >= var4; x--){
       //get tile's colour & draw it
-        image(world[y][x].img, x*32, y*32);
+      int temp = world[y][x].index;
+      image(world[y][x].img[temp], x*32, y*32);
+      world[y][x].animate();
         //TODO - Put another (uncoloured) image here if one exists? A decoration layer.
     }
   }

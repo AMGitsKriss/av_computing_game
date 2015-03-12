@@ -27,7 +27,7 @@ class Tiles {
         assignType("graphics/world-tiles", "plain_steel", true);
         break;
       case 3: //Force field
-        assignType("graphics/force-fields", "force_shield_1", false);
+        assignType("graphics/force-fields", "", false);
         break;
       case 4: //Button to change tile colour
         assignType("graphics/background-tiles", "background_change", false);
@@ -55,13 +55,7 @@ class Tiles {
         break;
     }
     
-    //need to put animate here before assigned colours
-    if(type==3){
-      dir = "graphics/force-fields";
-      String[] file = {"force_shield_1","force_shield_2","force_shield_3"};
-      
-      img = change.loadFiles(dir, file[index]);
-    }
+    
     
     //Assigning Colours
     if(col == "red"){
@@ -75,7 +69,7 @@ class Tiles {
     }
     else if(col == "blue"){
     img = change.spriteArray("blue", dir, file);
-    ////img = temp[0];
+    //img = temp[0];
     }
     else {
     img = change.loadFiles(dir, file);
@@ -93,9 +87,20 @@ class Tiles {
   
   //TODO - Allow for animated tiles
   void animate(){
-    if(frameCount % 10 == 0) index += 1;
-    if(index >= img.length) index = 0;
-    println("index+"+index);
+    if(frameCount % 5 == 0){ 
+      index ++;
+    }
+    if(index >= 2) index = 0;
+    
+    /*
+    //need to put animate here before assigned colours
+    if(type==3){
+      dir = "graphics/force-fields";
+      String[] file = {"force_shield_1","force_shield_2","force_shield_3"};
+      
+      img = change.loadFiles(dir, file[index]);
+    }
+    */
   }
   
 }
