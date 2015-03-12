@@ -77,10 +77,6 @@ class Player{
       }
     }
     
-    if(colliding("interactive_player") && colliding("interactive_level")){
-      //TODO - A HUD indication to tell the player to press [E]
-    }
-    
     //for now, change sprite colour on key presses:
     if(keys.ascii[105]) playerRed();
     if(keys.ascii[111]) playerGreen();
@@ -128,7 +124,7 @@ class Player{
     }
     
     //falling?
-    if(!colliding("down") && !jumping){
+    if(!colliding("down") && !colliding("horiz_left") && !jumping){
       pos.y -= vertSpeed;
       vertSpeed -= 0.1;
     }
@@ -163,7 +159,7 @@ class Player{
     translate(pos.x, pos.y);
     
     //falling?
-    if(!colliding("down")){
+    if(!colliding("down") && !colliding("horiz_left")){
       stillFrame(1);
     }
     else{
@@ -199,7 +195,7 @@ class Player{
     x = int(pos.x + sprites[0].width/2);
     y = int(pos.y + sprites[0].height/2);
     
-    
+    //BUTTONS
     //if stood by button/interactive item
     if(_dir == "interactive_player" && world[floor(y/32)-2][floor(x/32)-1].type == 5 ){
       return true;
@@ -208,10 +204,28 @@ class Player{
       return true;
     }
     
+    //MULTI-BLOCK TILE COLLISON
+    //Horizontal
+    if(_dir == "horiz_left" && (world[floor(y/32)+1][floor(x/32)-2].type == 11 || world[floor(y/32)+1][floor(x/32)-1].type == 11 )){
+      //TODO - Fix this when Anna's done.
+/*      
+      if(world[floor(y/32)+1][floor(x/32)-2].index >= 1){ //If animation index is partially open && stood on right-hand tile 
+        //TODO - REPLACE 1 ABOVE WITH CORRECT VALUE
+        return false;
+      }
+      else if(world[floor(y/32)+1][floor(x/32)-1].index >= 2){ //If animation index is fully open && stood on left-hand tile
+      //TODO - REPLACE 2 ABOVE WITH CORRECT VALUE
+        return false;
+      }
+*/
+      //pos.x+=1;
+      return true;
+    }
     
     //If bunping into block to the left
     //TODO - Create a boolean function to cycle through the semi-solid blocks. At present it only detects type 2 blocks. 
             //Need a list of semi-transparent blocks. Generate automatically or manually? 
+    //BLOCK COLLISION
     if(_dir == "left" && (world[floor((y+12)/32)][floor((x-6)/32)].solid || world[floor((y-12)/32)][floor((x-6)/32)].solid || (world[floor(y/32)][floor((x-6)/32)].type == 3 && world[floor(y/32)][floor((x-6)/32)].col != currentCol))){
       //pos.x+=1;
       return true;
