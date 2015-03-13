@@ -65,11 +65,16 @@ class ColourChanger {
         }
       }
     }
+    //pre-emptively making the array long enough for every .png file in the folder
     sprites = new PImage[files.length];
     for(int i = 0; i < files.length; i++){
       //applying file locations to loadimage/gallery
       if(_fileName != ""){
+        //Only want a single image, not a full directory. Making it one element long
+        sprites = new PImage[1];
         sprites[i] = loadImage(_dir + "/" + _fileName + ".png");
+        //interrupt the loop and return. We're done here.
+        return sprites;
       }
       else {
         sprites[i] = loadImage(_dir + "/" + files[i]);
