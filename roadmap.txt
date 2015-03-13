@@ -26,14 +26,15 @@ Config file - Load world from this!
 Button interaction changes player colour - RED|GREEN|BLUE
 Button interaction changes block colour - RED|GREEN|BLUE|GREY
 Tiles/blocks of varying shapes
+World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
+Tile animation
 
-<------------------------ Final Level Planning (kinda ongoing)
+<------------------------ Final Level Planning ongoing)
 
 Manipulable blast door
-World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
-manipulable doors effected by gravity (when grey?)
 Mouse interaction to change SOME block shape/pos
-Basic texturing
+
+manipulable doors effected by gravity (when grey?)
 Restrict interaction to "manipulator" conditional
 manipulable blocks
 ?Manipulable chests?
