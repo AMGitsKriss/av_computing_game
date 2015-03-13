@@ -36,8 +36,8 @@ class Tiles {
         assignType("graphics/background-tiles", "player_change", false);
         break;
       case 6: //Plain button
-        assignType("graphics", "button", false);
-        break;
+//        assignType("graphics", "button", false);
+//        break;
       case 7: //Glass
         assignType("graphics/world-tiles", "glass", true);
         break;

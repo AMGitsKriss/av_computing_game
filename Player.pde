@@ -103,7 +103,7 @@ class Player{
     }
     
     //on the floor and you hit jump AND jump cooldown's expired.
-    if(keys.ascii[32] && colliding("down") && jumpCD.update()){
+    if(keys.ascii[32] && (colliding("down") || colliding("horiz_left")) && jumpCD.update()){
       jumping = true;
       vertSpeed = -4.5;
       pos.y += vertSpeed;
@@ -133,7 +133,7 @@ class Player{
       pos.y--;
     }
     
-    if(colliding("down")){
+    if(colliding("down"))){
       vertSpeed = -4.5;
     }
     
@@ -209,6 +209,7 @@ class Player{
     if(_dir == "horiz_left" && (world[floor(y/32)+1][floor(x/32)-2].type == 11 || world[floor(y/32)+1][floor(x/32)-1].type == 11 )){
       //TODO - Fix this when Anna's done.  
      println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
+     println(world[floor(y/32)+1][floor(x/32)-2].img.length + " " + world[floor(y/32)+1][floor(x/32)-1].img.length);
       if(world[floor(y/32)+1][floor(x/32)-2].index >= 1){ //If animation index is partially open && stood on right-hand tile 
         //TODO - REPLACE 1 ABOVE WITH CORRECT VALUE
         return true;
