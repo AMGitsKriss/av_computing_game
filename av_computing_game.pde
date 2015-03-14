@@ -9,6 +9,8 @@ String[][] colours;
 Tiles[][] world;
 
   //TODO - There's some minor lag when app first starts. Can we find the source/reduce it?
+  
+  //TODO - Blast door. 01 is closed. 07 is half open. 13 is fully open. The door index needs to impact collision detection. 
 
 void setup(){
   //Smaller on low-res. Larger on high res.
