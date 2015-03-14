@@ -110,7 +110,7 @@ class Player{
     }
     
     //is the player mid-jump
-    if(jumping && !colliding("down")){
+    if(jumping && !colliding("down") && !colliding("horiz_left")){
       //if you hit the ceiling, the jump becomes a fall
       if(colliding("up") && jumping) {
         jumping = false;
@@ -133,7 +133,7 @@ class Player{
       pos.y--;
     }
     
-    if(colliding("down"))){
+    if(colliding("down")){
       vertSpeed = -4.5;
     }
     
@@ -206,10 +206,10 @@ class Player{
     
     //MULTI-BLOCK TILE COLLISON
     //Horizontal
-    if(_dir == "horiz_left" && (world[floor(y/32)+1][floor(x/32)-2].type == 11 || world[floor(y/32)+1][floor(x/32)-1].type == 11 )){
+    if(_dir == "horiz_left" && (world[floor((y+14)/32)][floor(x/32)-2].type == 11 || world[floor((y+14)/32)][floor(x/32)-1].type == 11 )){
       //TODO - Fix this when Anna's done.  
-     println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
-     println(world[floor(y/32)+1][floor(x/32)-2].img.length + " " + world[floor(y/32)+1][floor(x/32)-1].img.length);
+//     println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
+//     println(world[floor(y/32)+1][floor(x/32)-2].img.length + " " + world[floor(y/32)+1][floor(x/32)-1].img.length);
       if(world[floor(y/32)+1][floor(x/32)-2].index >= 1){ //If animation index is partially open && stood on right-hand tile 
         //TODO - REPLACE 1 ABOVE WITH CORRECT VALUE
         return true;
@@ -241,10 +241,10 @@ class Player{
       return true;
     }
     //hittin the ceiling
-    else if(_dir == "up" && world[floor((y-14)/32)][floor(x/32)].solid){
+    else if(_dir == "up" && (world[floor((y-14)/32)][floor(x/32)].solid || world[floor((y-14)/32)][floor(x/32)-2].type == 11 || world[floor((y-14)/32)][floor(x/32)-1].type == 11 )){
       return true;
     }
-    else if(_dir == "in_floor" && world[floor((y+13)/32)][floor(x/32)].solid){
+    else if(_dir == "in_floor" && (world[floor((y+13)/32)][floor(x/32)].solid || world[floor((y+13)/32)][floor(x/32)-2].type == 11 || world[floor((y+13)/32)][floor(x/32)-1].type == 11)){
       return true;
     }
     //otherwise not colliding

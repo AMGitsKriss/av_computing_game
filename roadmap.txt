@@ -25,6 +25,7 @@ Envorinment buttons & button interactivity
 Config file - Load world from this!
 Button interaction changes player colour - RED|GREEN|BLUE
 Button interaction changes block colour - RED|GREEN|BLUE|GREY
+"Press E" UI
 Tiles/blocks of varying shapes
 World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
 Tile animation
@@ -38,13 +39,18 @@ manipulable doors effected by gravity (when grey?)
 Restrict interaction to "manipulator" conditional
 manipulable blocks
 ?Manipulable chests?
+Shock-gun/sword-thing
 Destructable boxes/chests & restrict destruction to proximity detection & "sword" conditional
 
 
+Monsters/Aliens/Some Kinda Enemy
+"Selected Tool" UI
+monster health
+Weapon hurts monsters
+Wandering monsters
+monsters & gravity
 
 Manipulator, Weapon, Torch (not implimented yet) UI
-
-Monsters/Aliens/Some Kinda Enemy
 
 Everything dark (except radius around the player)
 Toggleable darkness (for debug | #cheatz)

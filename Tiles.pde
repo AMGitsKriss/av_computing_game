@@ -1,8 +1,8 @@
 class Tiles {
   
-  int type, index = 0;
+  int type, index = 0; //type is tile ID | index is the current animation frame
   String col;
-  boolean solid;
+  boolean solid, autoCycle; //autoCycle determines if the player has to interact to animate it
   PImage[] img;
   String dir, file;
   
@@ -18,40 +18,40 @@ class Tiles {
     switch(type) {
       
       case 0: //Empty backdrop
-        assignType("graphics/world-tiles", "blank_tile", false);
+        assignType("graphics/world-tiles", "blank_tile", false, true);
         break;
       case 1: //Steel backdrop
-        assignType("graphics/world-tiles", "backdrop_steel", false);
+        assignType("graphics/world-tiles", "backdrop_steel", false, true);
         break;
       case 2: //Steel tile
-        assignType("graphics/world-tiles", "plain_steel", true);
+        assignType("graphics/world-tiles", "plain_steel", true, true);
         break;
       case 3: //Force field
-        assignType("graphics/force-fields", "", false);
+        assignType("graphics/force-fields", "", false, true);
         break;
       case 4: //Button to change tile colour
-        assignType("graphics/background-tiles", "background_change", false);
+        assignType("graphics/background-tiles", "background_change", false, true);
         break;
       case 5: //Player changer button
-        assignType("graphics/background-tiles", "player_change", false);
+        assignType("graphics/background-tiles", "player_change", false, true);
         break;
       case 6: //Plain button
 //        assignType("graphics", "button", false);
 //        break;
       case 7: //Glass
-        assignType("graphics/world-tiles", "glass", true);
+        assignType("graphics/world-tiles", "glass", true, true);
         break;
       case 8: //"Red Access Only"
-        assignType("graphics/background-tiles", "sign_1", false);
+        assignType("graphics/background-tiles", "sign_1", false, true);
         break;
       case 9: //"Blue Access Only"
-        assignType("graphics/background-tiles", "sign_2", false);
+        assignType("graphics/background-tiles", "sign_2", false, true);
         break;
       case 10:  //"Green Access Only"
-        assignType("graphics/background-tiles", "sign_3", false);
+        assignType("graphics/background-tiles", "sign_3", false, true);
         break;
       case 11:  //horizontal blast door
-        assignType("graphics/horizontal-blastdoor", "", true);
+        assignType("graphics/horizontal-blastdoor", "", true, false);
         break;
     }
     
@@ -79,15 +79,16 @@ class Tiles {
   }
   
   //Assigning the values from the Switch statement
-  private void assignType(String _dir, String _file, boolean _solid){
+  private void assignType(String _dir, String _file, boolean _solid, boolean _cycle){
     dir = _dir;
     file = _file;
     solid = _solid;
+    autoCycle = _cycle;
   }
   
-  //TODO - Allow for animated tiles
+  //Animates tiles that don't need player interaction. Tiles that will animate on their own
   void animate(){
-    if(frameCount % 5 == 0){ 
+    if(frameCount % 4 == 0 && autoCycle){ 
       if(index < img.length-1){
         index ++;
       } else {

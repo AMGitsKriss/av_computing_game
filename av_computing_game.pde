@@ -8,6 +8,8 @@ int[][] tiles, interactive;
 String[][] colours;
 Tiles[][] world;
 
+  //TODO - There's some minor lag when app first starts. Can we find the source/reduce it?
+
 void setup(){
   //Smaller on low-res. Larger on high res.
   if(displayWidth > 1300) size(1280, 720);
@@ -31,13 +33,21 @@ void setup(){
 
 void debug(){
   fill(255);
-  text(player.currentCol, -(transX-15), -(transY-15)); // Current Player Colour
-  text("MOUSE | Y: " + (mouseY-transY)/32 + "    X: " + (mouseX-transX)/32, -(transX-15), -(transY-30)); //Tile index of mouse
-  text("PLAYER | Y: " + int(player.pos.y)/32 + "    X: " + int(player.pos.x)/32, -(transX-15), -(transY-45)); //Tile index of player
-  text("Selected Tile: " + tileIndex, -(transX-15), -(transY-60)); //Tile-type index of editor
+  String[] debugText = {"U + click to skip | I =red, O = green, P = blue, [ = default | ] to save map",
+                        player.currentCol, 
+                        "MOUSE | Y: " + (mouseY-transY)/32 + "    X: " + (mouseX-transX)/32, 
+                        "PLAYER | Y: " + int(player.pos.y)/32 + "    X: " + int(player.pos.x)/32,
+                        "Selected Tile: " + tileIndex
+                      };
+  for(int i = 0; i < debugText.length; i++){
+    text(debugText[i], -(transX-15), -(transY-15*(i+1)));
+  }
 }
 
 void draw(){
+  if(keys.ascii[93]){ 
+    LevelSave save = new LevelSave();
+  }
   background(50);
   pushMatrix();
   noStroke(); 
@@ -100,11 +110,6 @@ void mousePressed(){
         } else {
           println("Oops. That's solid.");
         }
-      
-      //Drawing map-tile on a click while holding TAB
-      if(keys.ascii[TAB]){ 
-        world[(mouseY-transY)/32][(mouseX-transX)/32] = new Tiles(tileIndex, player.currentCol);
-      }
     }
   //If out of bounds
   } else {
@@ -113,6 +118,15 @@ void mousePressed(){
   
   
   
+}
+
+void mouseClicked(){
+  if(mouseX-transX > 0 && mouseX-transX < (world[0].length-1)*32 && mouseY-transY > 0 && mouseY-transY < (world.length-1)*32){
+    //Drawing map-tile on a click while holding TAB
+      if(keys.ascii[TAB]){ 
+        world[(mouseY-transY)/32][(mouseX-transX)/32] = new Tiles(tileIndex, player.currentCol);
+      }
+  }
 }
 
 void mouseDragged(){

@@ -7,6 +7,7 @@ class LevelSave{
   LevelSave(){
     //Constructor
     update();
+    println("Saved!");
   }
   
   /*
