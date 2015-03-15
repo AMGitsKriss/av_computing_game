@@ -1,5 +1,6 @@
 Player player; 
 KeyHandler keys;
+MouseHandler mouse;
 int transX, transY, tileIndex = 2;
 ColourChanger change;
 TilesChange[] tilesChange;
@@ -21,6 +22,7 @@ void setup(){
   //declaring characters with posion and image directory
   player = new Player(12*32, 10*32, "graphics/player");
   keys = new KeyHandler();
+  mouse = new MouseHandler();
   
   //Load the level
   LevelLoad load = new LevelLoad();
@@ -53,6 +55,10 @@ void draw(){
   background(50);
   pushMatrix();
   noStroke(); 
+  
+  if(world[8][18].img.length < 2*mouse.mouseUpdateX()){
+    world[8][18].index = mouse.mouseUpdateX();
+  }
   
   //only translating by whole pixels
   transX = floor(-player.pos.x + width/2);
@@ -98,6 +104,7 @@ int drawRange(int _pos, int _var, int _length){
 }
 
 void mousePressed(){
+  mouse.mousePressed();
   //reset player on mouse click
   //player = new Player(33, 34, "graphics/player");
   
