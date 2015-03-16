@@ -56,8 +56,12 @@ void draw(){
   pushMatrix();
   noStroke(); 
   
-  if(world[8][18].img.length < 2*mouse.mouseUpdateX()){
+  if(world[8][18].img.length > mouse.mouseUpdateX() && 0 < mouse.mouseUpdateX() && mouse.pressed == true){
     world[8][18].index = mouse.mouseUpdateX();
+    println("Door state = " + world[8][18].index);
+  }
+  else if( 0 > mouse.mouseUpdateX() && mouse.pressed == true){
+    world[8][18].index = 0;
   }
   
   //only translating by whole pixels
@@ -78,8 +82,8 @@ void draw(){
     for(int x = var3; x >= var4; x--){
       //get tile's colour & draw it
       int temp = world[y][x].index;
-      image(world[y][x].img[temp], x*32, y*32);
       world[y][x].animate();
+      image(world[y][x].img[temp], x*32, y*32);
         //TODO - Put another (uncoloured) image here if one exists? A decoration layer.
     }
   }
@@ -124,9 +128,10 @@ void mousePressed(){
   } else {
     println("Oops. Went out of bounds.");
   }
-  
-  
-  
+}
+
+void mouseReleased(){
+  mouse.mouseReleased();
 }
 
 void mouseClicked(){

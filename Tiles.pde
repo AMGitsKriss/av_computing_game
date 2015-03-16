@@ -94,6 +94,10 @@ class Tiles {
       } else {
         index = 0;
       }
+    } else {
+      if(index >= img.length){
+        index = 0;
+      }
     }
   }
 }

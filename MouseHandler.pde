@@ -1,6 +1,7 @@
 class MouseHandler{
   
   int mX, mY;
+  boolean pressed = false;
   
   MouseHandler(){
     //constructor
@@ -15,11 +16,13 @@ class MouseHandler{
   void mousePressed(){
     mX = mouseX;
     mY = mouseY;
+    pressed = true;
   }
   
   void mouseReleased(){
     mX = 0;
     mY = 0;
+    pressed = false;
   }
   
   int mouseUpdateX(){
@@ -27,7 +30,7 @@ class MouseHandler{
       return 0;
     }
     else {
-    int temp = (mX - mouseX)/3;
+    int temp = floor((mX - mouseX)/10);
     println(temp);      
     return temp;
     }
