@@ -210,13 +210,13 @@ class Player{
       //TODO - Fix this when Anna's done.  
 //     println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
 //     println(world[floor(y/32)+1][floor(x/32)-2].img.length + " " + world[floor(y/32)+1][floor(x/32)-1].img.length);
-      if(world[floor(y/32)+1][floor(x/32)-2].index >= 1){ //If animation index is partially open && stood on right-hand tile 
+      if(world[floor(y/32)+1][floor(x/32)-2].index >= 5){ //If animation index is partially open && stood on right-hand tile 
         //TODO - REPLACE 1 ABOVE WITH CORRECT VALUE
-        return true;
+        return false;
       }
-      else if(world[floor(y/32)+1][floor(x/32)-1].index >= 2){ //If animation index is fully open && stood on left-hand tile
+      else if(world[floor(y/32)+1][floor(x/32)-1].index >= 12){ //If animation index is fully open && stood on left-hand tile
       //TODO - REPLACE 2 ABOVE WITH CORRECT VALUE
-        return true;
+        return false;
       }
 
       //pos.x+=1;
@@ -241,10 +241,15 @@ class Player{
       return true;
     }
     //hittin the ceiling
-    else if(_dir == "up" && (world[floor((y-14)/32)][floor(x/32)].solid || world[floor((y-14)/32)][floor(x/32)-2].type == 11 || world[floor((y-14)/32)][floor(x/32)-1].type == 11 )){
+    else if(_dir == "up" && (world[floor((y-14)/32)][floor(x/32)].solid || 
+              (world[floor((y-14)/32)][floor(x/32)-2].type == 11 && world[floor(y/32)+1][floor(x/32)-2].index > world[floor((y-14)/32)][floor(x/32)-2].img.length/2) || 
+              (world[floor((y-14)/32)][floor(x/32)-1].type == 11 && world[floor(y/32)+1][floor(x/32)-1].index >= world[floor((y-14)/32)][floor(x/32)-2].img.length)
+             )){
       return true;
     }
-    else if(_dir == "in_floor" && (world[floor((y+13)/32)][floor(x/32)].solid || world[floor((y+13)/32)][floor(x/32)-2].type == 11 || world[floor((y+13)/32)][floor(x/32)-1].type == 11)){
+    else if(_dir == "in_floor" && (world[floor((y+13)/32)][floor(x/32)].solid || 
+            (world[floor((y+13)/32)][floor(x/32)-2].type == 11 && world[floor((y+13)/32)+1][floor(x/32)-2].index > world[floor((y+13)/32)][floor(x/32)-2].img.length/2) || 
+            (world[floor((y+13)/32)][floor(x/32)-1].type == 11 && world[floor((y+13)/32)+1][floor(x/32)-1].index >= world[floor((y+13)/32)][floor(x/32)-2].img.length))){
       return true;
     }
     //otherwise not colliding
