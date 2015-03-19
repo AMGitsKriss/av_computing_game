@@ -140,7 +140,7 @@ class Player extends Collision{
     if(colliding("down")){
       vertSpeed = 0;
     }
-    println(colliding("up") + "  " + colliding("down") + "  " + colliding("left") + "  " + colliding("right") + "  " + colliding("in_floor") + "  " + colliding("horiz_left"));
+//    println(colliding("up") + "  " + colliding("down") + "  " + colliding("left") + "  " + colliding("right") + "  " + colliding("in_floor") + "  " + colliding("horiz_left"));
   }
   void stillFrame(int i){
     //if last direction button was left

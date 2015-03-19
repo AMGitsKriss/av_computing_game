@@ -26,19 +26,17 @@ class MouseHandler{
   }
   
   int mouseUpdateX(){
-    if( mX==0 ) {
-      return 0;
-    }
-    else {
-    int temp = floor((mX - mouseX)/10);
-    println(temp);      
-    return temp;
-    }
+    float temp1 = mX - mouseX;  
+    // image sprites are 0-12. buffer of 2 each side (-2 to 14) prevents it being impossible to open door all the way
+    int temp2 = int(map(temp1,0,width,-2,14)); 
+//    println(temp1 + " " + temp2);
+    return temp2;
   }
   
   int mouseUpdateY(){
-    int temp = (mY - mouseY)/3;
-    println(temp);
-    return temp;
+    float temp1 = mY - mouseY;  
+    int temp2 = int(map(temp1,0,height,-2,14));
+ //   println(temp1 + " " + temp2);
+    return temp2;
   }
 }
