@@ -1,5 +1,5 @@
 class ColourChanger {
-
+  
   /* 
   After some experimentation, it seems more prudent to reload the grey image to apply a new colour
   than to try to restore the modified image to grey in code. 
@@ -38,14 +38,12 @@ class ColourChanger {
     }
     return sprites;
   }
-
+  
   PImage[] loadFiles(String _dir, String _fileName) {
     file = new File(dataPath(sketchPath+"/"+_dir));
-    files = sort(file.list()); //Making sure to sort this file list. Not all computers load a directory alphabetically
+    files = file.list();
     PImage[] sprites;
-    
-    
-    
+
     for (int i = files.length-1; i >= 0; i--)
     {
       //grabbing & saving file directories
@@ -82,10 +80,6 @@ class ColourChanger {
         sprites[i] = loadImage(_dir + "/" + files[i]);
       }
     }
-    
-    //TODO - Lists file order. Remove later
-    if( _dir == "graphics/horizontal-blastdoor") println(files);
-    
     return sprites;
   }
   

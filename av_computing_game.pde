@@ -57,12 +57,9 @@ void draw(){
   pushMatrix();
   noStroke(); 
   
-  
-  //Testing mouse dragging to open the door
   if(world[8][18].img.length > mouse.mouseUpdateX() && 0 < mouse.mouseUpdateX() && mouse.pressed == true){
     world[8][18].index = mouse.mouseUpdateX();
     println("Door state = " + world[8][18].index);
-    //----------------
   }
   else if( 0 > mouse.mouseUpdateX() && mouse.pressed == true){
     world[8][18].index = 0;
