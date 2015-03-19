@@ -17,6 +17,10 @@ class Tiles {
     
     switch(type) {
       
+      /*
+      assignType(String _dir, String _file, boolean _solid, boolean _cycle);
+      */
+      
       case 0: //Empty backdrop
         assignType("graphics/world-tiles", "blank_tile", false, true);
         break;
@@ -35,9 +39,9 @@ class Tiles {
       case 5: //Player changer button
         assignType("graphics/background-tiles", "player_change", false, true);
         break;
-      case 6: //Plain button
-//        assignType("graphics", "button", false);
-//        break;
+      case 6: //Gravity Sign
+        assignType("graphics/background-tiles", "sign_4", false, false);
+        break;
       case 7: //Glass
         assignType("graphics/world-tiles", "glass", true, true);
         break;

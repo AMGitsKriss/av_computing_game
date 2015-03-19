@@ -14,8 +14,6 @@ class LevelSave{
   Cycle through the world array and assign each colour (r, g, b, d) to map_colours.txt and
   the tile values to map_tiles.txt. Each value must have a tab after it.
   
-  Will a tab at the end impact how the array is parsed when starting the game?
-  
   interactive_level.txt likely won't need interacting with. An easy way to build/edit this 
   file? Probably a seperate smaller program.
   */
@@ -28,6 +26,7 @@ class LevelSave{
       for(int x = 0; x < world[y].length; x++){
         outputType.print(world[y][x].type);  // Write the type to the file
         outputCol.print(world[y][x].col.charAt(0));  // Write the colour to the file
+        //If not at the end of the line, add a tab after the value
         if(x!=world[y].length-1){ 
           outputType.print(TAB);
           outputCol.print(TAB);
