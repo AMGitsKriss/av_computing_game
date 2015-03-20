@@ -22,15 +22,14 @@ class Collision{
     
     //MULTI-BLOCK TILE COLLISON
     //Horizontal
-    if(_dir == "horiz_left" && (world[floor((y+14)/32)][floor(x/32)-2].type == 11 || world[floor((y+14)/32)][floor(x/32)-1].type == 11 )){
+    if(_dir == "horiz_left_down" && (world[floor((y+14)/32)][floor(x/32)-2].type == 11 || world[floor((y+14)/32)][floor(x/32)-1].type == 11 )){
       //TODO - Fix this.  
 //     println(world[floor(y/32)+1][floor(x/32)-2].index + " " + world[floor(y/32)+1][floor(x/32)-1].index);
 //     println(world[floor(y/32)+1][floor(x/32)-2].img.length + " " + world[floor(y/32)+1][floor(x/32)-1].img.length);
-      if(world[floor(y/32)+1][floor(x/32)-2].index >= 5 || world[floor(y/32)][floor(x/32)-2].index >= 5){ //If animation index is partially open && stood on right-hand tile 
-        println("Right tile");
+      if(world[floor((y+14)/32)][floor(x/32)-2].index >= 5 /*|| world[floor(y/32)][floor(x/32)-2].index >= 5*/){ //If animation index is partially open && stood on right-hand tile 
         return false;
       }
-      else if(world[floor(y/32)+1][floor(x/32)-1].index >= 12 || world[floor(y/32)][floor(x/32)-1].index >= 12){ //If animation index is fully open && stood on left-hand tile
+      else if(world[floor((y+14)/32)][floor(x/32)-1].index >= 12 /*|| world[floor(y/32)][floor(x/32)-1].index >= 12*/){ //If animation index is fully open && stood on left-hand tile
       //TODO - REPLACE 2 ABOVE WITH CORRECT VALUE
       println("left tile");
         return false;
@@ -60,8 +59,8 @@ class Collision{
     }
     //hittin the ceiling
     else if(_dir == "up" && (world[floor((y-14)/32)][floor(x/32)].solid || 
-              (world[floor((y-14)/32)][floor(x/32)-2].type == 11 && world[floor(y/32)+1][floor(x/32)-2].index > world[floor((y-14)/32)][floor(x/32)-2].img.length/2) || 
-              (world[floor((y-14)/32)][floor(x/32)-1].type == 11 && world[floor(y/32)+1][floor(x/32)-1].index >= world[floor((y-14)/32)][floor(x/32)-2].img.length)
+              (world[floor((y-14)/32)][floor(x/32)-2].type == 11 && world[floor((y-14)/32)][floor(x/32)-2].index < world[floor((y-14)/32)][floor(x/32)-2].img.length/2) || 
+              (world[floor((y-14)/32)][floor(x/32)-1].type == 11 && world[floor((y-14)/32)][floor(x/32)-1].index < world[floor((y-14)/32)][floor(x/32)-1].img.length-1) 
              )){
       return true;
     }

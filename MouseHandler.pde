@@ -31,7 +31,7 @@ class MouseHandler{
     }
     else {
     int temp = floor((mX - mouseX)/10);
-    println(temp);      
+//    println(temp);      
     return temp;
     }
   }

@@ -18,7 +18,6 @@ class Player extends Collision{
     directory = _dir;
     pos = new PVector(_x, _y);
     jumpCD = new Timer(600);
-    
     //applying an initial colour
     playerRed();
   }
@@ -107,14 +106,20 @@ class Player extends Collision{
         /*---------------- COLLISION LOGIC --------------------*/
     
     //on the floor and you hit jump AND jump cooldown's expired.
-    if(keys.ascii[32] && ( colliding("down") || colliding("horiz_left") ) && jumpCD.update()){
+    if(keys.ascii[32] && ( colliding("down") || colliding("horiz_left_down") ) && jumpCD.update()){
       jumping = true;
       vertSpeed = -4.5;
       pos.y += vertSpeed;
     }
     
+    if(jumping && colliding("horiz_left_down")){
+      println("BANG");
+      vertSpeed *= -1;
+      jumping = false;
+    }
+ 
     //is the player mid-jump
-    if(jumping && !colliding("down") && !colliding("horiz_left") && !colliding("in_floor")){
+    if(jumping && !colliding("down") && !colliding("horiz_left_down") && !colliding("in_floor")){
       //if you hit the ceiling, the jump becomes a fall
       if(colliding("up") && jumping) {
         jumping = false;
@@ -128,7 +133,7 @@ class Player extends Collision{
     }
     
     //falling?
-    if(!colliding("down") && !colliding("horiz_left") && !jumping){
+    if(!colliding("down") && !colliding("horiz_left_down") && !jumping){
       pos.y -= vertSpeed;
       vertSpeed -= 0.1;
     }
@@ -140,7 +145,7 @@ class Player extends Collision{
     if(colliding("down")){
       vertSpeed = 0;
     }
-    println(colliding("up") + "  " + colliding("down") + "  " + colliding("left") + "  " + colliding("right") + "  " + colliding("in_floor") + "  " + colliding("horiz_left"));
+//    println(colliding("up") + "  " + colliding("down") + "  " + colliding("left") + "  " + colliding("right") + "  " + colliding("in_floor") + "  " + colliding("horiz_left_down"));
   }
   void stillFrame(int i){
     //if last direction button was left
@@ -163,7 +168,7 @@ class Player extends Collision{
     translate(pos.x, pos.y);
     
     //falling?
-    if(!colliding("down") && !colliding("horiz_left")){
+    if(!colliding("down") && !colliding("horiz_left_down")){
       stillFrame(1);
     }
     else{
