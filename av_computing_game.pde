@@ -57,13 +57,18 @@ void draw(){
   pushMatrix();
   noStroke(); 
   
-  if(world[8][18].img.length > mouse.mouseUpdateX() && 0 < mouse.mouseUpdateX() && mouse.pressed == true){
-    world[8][18].index = mouse.mouseUpdateX();
-    println("Door state = " + world[8][18].index);
-  }
-  else if( 0 > mouse.mouseUpdateX() && mouse.pressed == true){
-    world[8][18].index = 0;
-  }
+  //TODO - Make sure the nearest foor the the mouse (That's on-screen) is controlled
+  
+  //Handling the door
+  if(mouse.pressed == true  && world[8][18].index >= 0 ){
+    int temp = mouse.mouseUpdateX();
+    if(world[8][18].index < world[8][18].img.length-1 && temp > 0){
+      world[8][18].index += temp;
+    }
+    else if(world[8][18].index > 0 && temp < 0){
+      world[8][18].index += temp;
+    }
+  } 
   
   //only translating by whole pixels
   transX = floor(-player.pos.x + width/2);
@@ -101,6 +106,7 @@ void draw(){
   }
 }
 
+// only draw _var distance around the player's _pos and crop _length to reduce surplus tiles.
 int drawRange(int _pos, int _var, int _length){
   int value = (_pos/32) + _var;
   if(value < 0) value = 0;

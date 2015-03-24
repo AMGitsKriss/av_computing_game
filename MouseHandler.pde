@@ -1,17 +1,24 @@
 class MouseHandler{
   
   int mX, mY;
+  PVector select;
   boolean pressed = false;
   
   MouseHandler(){
     //constructor
   }
   
-  //TODO - complete  the mouse handler
+  //TODO - Do we wantto continue with this, or would we rather have a button open/close doors?
   /*
   While clicked the handler must keep track of the starting co-ordinates of the click
   When released it must forget them.  
+  
+  
   */
+  
+  void select(PVector _mouse){
+    select = _mouse;
+  }
   
   void mousePressed(){
     mX = mouseX;
@@ -26,19 +33,17 @@ class MouseHandler{
   }
   
   int mouseUpdateX(){
-    if( mX==0 ) {
-      return 0;
-    }
-    else {
-    int temp = floor((mX - mouseX)/10);
-//    println(temp);      
-    return temp;
-    }
+
+    int direction;
+    //determing 1 or 0
+    direction = (mouseX - mX != 0) ? 1 : 0;
+    //then determining left or right
+    direction = (mouseX - mX < 0) ? direction * 1 : direction * -1;
+    return direction;
   }
   
   int mouseUpdateY(){
-    int temp = (mY - mouseY)/3;
-    println(temp);
-    return temp;
+    return 0;
+    //TODO - Same as the X function above when needed.
   }
 }

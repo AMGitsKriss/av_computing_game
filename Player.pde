@@ -50,6 +50,28 @@ class Player extends Collision{
     image(pressE, x-20, y-60);
   }
   
+  void searchBlastDoors(){
+    //Grabbing the range of tiles on the screen. Only tiles within these bounds
+    //will be searched.
+    int var1 = drawRange(y, (height/32)/2+3, world.length),
+        var2 = drawRange(y, -(height/32)/2-4, world.length),
+        var3 = drawRange(x, (width/32)/2+3, world[0].length),
+        var4 = drawRange(x, -(width/32)/2-4, world[0].length);
+    PVector nearest = null, mousePos = new PVector(mouseX, mouseY);
+    //Redrawing the world from bottom-right to top left.
+    //This allows for graphics larger than the tile to be drawn properly
+    for(int y = var1; y >= var2 ; y--){
+      for(int x = var3; x >= var4; x--){
+        PVector temp = new PVector(x*32, y*32);
+        if(world[y][x].type == 11 && mousePos.dist(temp) < mousePos.dist(nearest)){
+          nearest = new PVector(x*32, y*32);
+          //a call to  the mouse handler that selects the active door.
+          //mouse.select();
+        }
+      }
+    }
+  }
+  
   //TODO - This function is a mess. Condesnse it into smaller functions.
   void update(){
     if(colliding("interactive_player")){
@@ -104,6 +126,7 @@ class Player extends Collision{
     }
     
         /*---------------- COLLISION LOGIC --------------------*/
+              //*    This looks bad, and I feel bad    *//
     
     //on the floor and you hit jump AND jump cooldown's expired.
     if(keys.ascii[32] && ( colliding("down") || colliding("horiz_left_down") ) && jumpCD.update()){
@@ -113,7 +136,6 @@ class Player extends Collision{
     }
     
     if(jumping && colliding("horiz_left_down")){
-      println("BANG");
       vertSpeed *= -1;
       jumping = false;
     }

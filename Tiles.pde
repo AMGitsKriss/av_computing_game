@@ -102,6 +102,9 @@ class Tiles {
       if(index >= img.length){
         index = 0;
       }
+      else if(index < 0){
+        index = 0;
+      }
     }
   }
 }

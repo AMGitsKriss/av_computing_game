@@ -27,14 +27,22 @@ Button interaction changes player colour - RED|GREEN|BLUE
 Button interaction changes block colour - RED|GREEN|BLUE|GREY
 "Press E" UI
 Tiles/blocks of varying shapes
-World editing functions (I, O or P + mouseclick for colour | mousewheel ot select block id)
+World editing functions (I, O or P + mouseclick for colour | mousewheel at select block id)
 Tile animation
-
-<------------------------ Final Level Planning ongoing)
-
 Manipulable blast door
-Mouse interaction to change SOME block shape/pos
 
+<------------------------ (Final Level Planning ongoing)
+
+Restrict blast door interaction to colour.
+Mouse proximity detection for blast doors.
+Gravity changer button.
+
+Add more imagery/signs
+Report
+
+
+
+Mouse interaction to change SOME block shape/pos
 manipulable doors effected by gravity (when grey?)
 Restrict interaction to "manipulator" conditional
 manipulable blocks
