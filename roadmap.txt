@@ -33,14 +33,17 @@ Manipulable blast door
 
 <------------------------ (Final Level Planning ongoing)
 
+Mouse proximity detection & blast door search.
 Restrict blast door interaction to colour.
-Mouse proximity detection for blast doors.
 Gravity changer button.
+Extra rendering layer/array for decoratinos not impacted by colour changing.
 
 Add more imagery/signs
 Report
 
+<------- END
 
+	vvv - AWESOME SHIT WE DON'T HAVE TIME FOR - vvv
 
 Mouse interaction to change SOME block shape/pos
 manipulable doors effected by gravity (when grey?)
