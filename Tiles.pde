@@ -57,6 +57,39 @@ class Tiles {
       case 11:  //horizontal blast door
         assignType("graphics/horizontal-blastdoor", "", true, false);
         break;
+      case 12: //pipes type 1 part 1
+        assignType("graphics/pipes", "pipes_1.1", false, false);
+        break;
+      case 13: //pipes type 1 part 2
+        assignType("graphics/pipes", "pipes_1.2", false, false);
+        break;
+      case 14: //pipes type 2 part 1
+        assignType("graphics/pipes", "pipes_2.1", false, false);
+        break;
+      case 15: //pipes type 2 part 2
+        assignType("graphics/pipes", "pipes_2.2", false, false);
+        break;
+      case 16: //pipes type 2 part 3
+        assignType("graphics/pipes", "pipes_2.3", false, false);
+        break;
+      case 17: //pipes type 2 part 4
+        assignType("graphics/pipes", "pipes_2.4", false, false);
+        break;
+      case 18: //pipes type 3 part 1
+        assignType("graphics/pipes", "pipes_3.1", false, false);
+        break;
+      case 19: //pipes type 3 part 2
+        assignType("graphics/pipes", "pipes_3.2", false, false);
+        break;
+      case 20: //pipes type 3 part 3
+        assignType("graphics/pipes", "pipes_3.3", false, false);
+        break;
+      case 21: //pipes type 3 part 4
+        assignType("graphics/pipes", "pipes_3.4", false, false);
+        break;
+      case 22: //pipes type 4
+        assignType("graphics/pipes", "pipes_4", false, false);
+        break;
     }
     
     
