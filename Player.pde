@@ -57,23 +57,30 @@ class Player extends Collision{
         var2 = drawRange(y, -(height/32)/2-4, world.length),
         var3 = drawRange(x, (width/32)/2+3, world[0].length),
         var4 = drawRange(x, -(width/32)/2-4, world[0].length);
-    PVector nearest = null, mousePos = new PVector(mouseX, mouseY);
+    PVector nearest = null, mousePos = new PVector(mouseX-transX, mouseY-transY);
     //Redrawing the world from bottom-right to top left.
     //This allows for graphics larger than the tile to be drawn properly
     for(int y = var1; y >= var2 ; y--){
       for(int x = var3; x >= var4; x--){
         PVector temp = new PVector(x*32, y*32);
-        if(world[y][x].type == 11 && mousePos.dist(temp) < mousePos.dist(nearest)){
+        if(world[y][x].type == 11 && nearest == null){
           nearest = new PVector(x*32, y*32);
-          //a call to  the mouse handler that selects the active door.
-          //mouse.select();
+        }
+        else if(world[y][x].type == 11 && mousePos.dist(temp) < mousePos.dist(nearest)){
+          nearest = new PVector(x*32, y*32);
         }
       }
     }
+    //a call to  the mouse handler that selects the active door.
+    mouse.select(nearest);
   }
   
   //TODO - This function is a mess. Condesnse it into smaller functions.
   void update(){
+
+    //search for nearest door to mouse
+    searchBlastDoors(); 
+    
     if(colliding("interactive_player")){
       showInteractButton();
       if(keys.ascii[101]){

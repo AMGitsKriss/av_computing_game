@@ -31,7 +31,6 @@ class Collision{
       }
       else if(world[floor((y+14)/32)][floor(x/32)-1].index >= 12 /*|| world[floor(y/32)][floor(x/32)-1].index >= 12*/){ //If animation index is fully open && stood on left-hand tile
       //TODO - REPLACE 2 ABOVE WITH CORRECT VALUE
-      println("left tile");
         return false;
       }
 

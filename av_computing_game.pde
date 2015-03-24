@@ -60,13 +60,13 @@ void draw(){
   //TODO - Make sure the nearest foor the the mouse (That's on-screen) is controlled
   
   //Handling the door
-  if(mouse.pressed == true  && world[8][18].index >= 0 ){
+  if(mouse.pressed == true && mouse.sX != -1 && world[mouse.sY][mouse.sX].index >= 0 && world[mouse.sY][mouse.sX].col == player.currentCol){
     int temp = mouse.mouseUpdateX();
-    if(world[8][18].index < world[8][18].img.length-1 && temp > 0){
-      world[8][18].index += temp;
+    if(world[mouse.sY][mouse.sX].index < world[mouse.sY][mouse.sX].img.length-1 && temp > 0){
+      world[mouse.sY][mouse.sX].index += temp;
     }
-    else if(world[8][18].index > 0 && temp < 0){
-      world[8][18].index += temp;
+    else if(world[mouse.sY][mouse.sX].index > 0 && temp < 0){
+      world[mouse.sY][mouse.sX].index += temp;
     }
   } 
   

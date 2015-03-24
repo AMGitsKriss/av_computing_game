@@ -1,7 +1,6 @@
 class MouseHandler{
   
-  int mX, mY;
-  PVector select;
+  int mX, mY, sX,sY;
   boolean pressed = false;
   
   MouseHandler(){
@@ -17,7 +16,12 @@ class MouseHandler{
   */
   
   void select(PVector _mouse){
-    select = _mouse;
+    if(_mouse == null){
+      sX = sY = -1;
+    } else {
+      sX = int(_mouse.x/32);
+      sY = int(_mouse.y/32);
+    }
   }
   
   void mousePressed(){

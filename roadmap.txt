@@ -30,15 +30,15 @@ Tiles/blocks of varying shapes
 World editing functions (I, O or P + mouseclick for colour | mousewheel at select block id)
 Tile animation
 Manipulable blast door
+Mouse proximity detection & blast door search. (half done)
+Restrict blast door interaction to colour.
 
 <------------------------ (Final Level Planning ongoing)
 
-Mouse proximity detection & blast door search.
-Restrict blast door interaction to colour.
 Gravity changer button.
-Extra rendering layer/array for decoratinos not impacted by colour changing.
+Sound Effects D:
 
-Add more imagery/signs
+Add more totally awesome signs (can we haz a grumpycat?)
 Report
 
 <------- END
