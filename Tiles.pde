@@ -90,6 +90,22 @@ class Tiles {
       case 22: //pipes type 4
         assignType("graphics/pipes", "pipes_4", false, false);
         break;
+      case 23: //A key sign
+        assignType("graphics/tutorial", "a_key", false, false);
+        break;
+      case 24: //D key sign
+        assignType("graphics/tutorial", "d_key", false, false);
+        break;
+      case 25: //Space key sign
+        assignType("graphics/tutorial", "space_key", false, false);
+        break;
+      case 26: //Space key sign
+        assignType("graphics/tutorial", "mouse", false, false);
+        break;
+      case 27: //Grumpycat
+        assignType("graphics/misc", "grumpy", false, false);
+        break;
+      
     }
     
     

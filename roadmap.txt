@@ -38,7 +38,7 @@ Restrict blast door interaction to colour.
 Gravity changer button.
 Sound Effects D:
 
-Add more totally awesome signs (can we haz a grumpycat?)
+Add more totally awesome signs 
 Report
 
 <------- END
