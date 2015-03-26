@@ -19,6 +19,11 @@ class Collision{
     if(_dir == "interactive_level" && world[floor(y/32)-2][floor(x/32)-1].type == 4 ){
       return true;
     }
+    if(_dir == "gravity" && (world[floor(y/32)][floor(x/32)].type == 28 ||
+       world[floor(y/32)][floor(x/32)].type == 29 ||
+       world[floor(y/32)][floor(x/32)].type == 30)){
+      return true;
+    }
     
     //MULTI-BLOCK TILE COLLISON
     //Horizontal

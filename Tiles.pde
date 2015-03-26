@@ -105,6 +105,11 @@ class Tiles {
       case 27: //Grumpycat
         assignType("graphics/misc", "grumpy", false, false);
         break;
+      case 28:  //Gravity Button speeds - 0.05
+      case 29:  //0.1
+      case 30:  //0.2
+        assignType("graphics/background-tiles", "button", false, false);
+        break;
       
     }
     

@@ -32,10 +32,10 @@ Tile animation
 Manipulable blast door
 Mouse proximity detection & blast door search. (half done)
 Restrict blast door interaction to colour.
+Gravity changer button.
 
 <------------------------ (Final Level Planning ongoing)
 
-Gravity changer button.
 Sound Effects D:
 
 Add more totally awesome signs 

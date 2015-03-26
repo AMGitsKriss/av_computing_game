@@ -7,7 +7,7 @@ class Player extends Collision{
   Timer jumpCD; //cooldown on player jumping
   
   int index = 0, speed = 3; //graphic's position in the array & movement speed
-  float vertSpeed = 3;
+  float vertSpeed = 3, gravity = 0.2; //Gravity ranges from 0.05, to 0.1, to 0.2.
   boolean moving = false, jumping = false;
   PVector pos;
   
@@ -80,6 +80,25 @@ class Player extends Collision{
 
     //search for nearest door to mouse
     searchBlastDoors(); 
+    
+    if(colliding("gravity")){
+      showInteractButton();
+      if(keys.ascii[101]){
+        //setting gravity to (28-17) * 0.05 = 0.05 through to (30-17) * 0.05 = 0.2
+        switch(world[floor(y/32)][floor(x/32)].type) {
+          case 28:
+            gravity = 0.05;
+            break;
+          case 29:
+            gravity = 0.1;
+            break;
+          case 30:
+            gravity = 0.2;
+            break;
+        }
+        println(gravity);
+      }
+    }
     
     if(colliding("interactive_player")){
       showInteractButton();
@@ -154,7 +173,7 @@ class Player extends Collision{
         jumping = false;
       }
       pos.y += vertSpeed;
-      vertSpeed += 0.1;
+      vertSpeed += gravity;
       jumpCD = new Timer(500);
     //else fall
     } else {
@@ -163,8 +182,9 @@ class Player extends Collision{
     
     //falling?
     if(!colliding("down") && !colliding("horiz_left_down") && !jumping){
+      println(vertSpeed);
       pos.y -= vertSpeed;
-      vertSpeed -= 0.1;
+      vertSpeed -= gravity;
     }
     
     if(colliding("in_floor")){
