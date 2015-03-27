@@ -151,9 +151,11 @@ class Player extends Collision{
       pos.x -= speed;
       lastPressed = 97;
       
-      //play footstep sound
-      if(canplay) play("footsteps");
-      canplay = false;
+      //IF colliding with floor OR horizontal door, play sound canplay = false
+      if((colliding("down") || colliding("horiz_left_down")) && canplay){
+        play("footsteps");
+        canplay = false;
+      }
     }
     
     //Move right on D
@@ -162,18 +164,18 @@ class Player extends Collision{
       pos.x += speed;
       lastPressed = 100;
       
-      //play footstep sound
-      if(canplay) play("footsteps");
-      canplay = false;
+      //IF colliding with floor OR horizontal door, play sound canplay = false
+      if((colliding("down") || colliding("horiz_left_down")) && canplay){
+        play("footsteps");
+        canplay = false;
+      }
     }
     
-    //if A or D and space bar is pressed, no footstep sound
-    else if(keys.ascii[97] && keys.ascii[32] || keys.ascii[100] && keys.ascii[32]){
-      println("working");
-      //footsteps sound will not play
-      canplay = true;
-      footsteps.pause();
-    }
+    //IF NOT colliding with floor OR horizontal door, pause sound. canplay = true
+    if(!colliding("down") && !colliding("horiz_left_down")){
+        footsteps.pause();
+        canplay = true;
+      }
     
         /*---------------- COLLISION LOGIC --------------------*/
               //*    This looks bad, and I feel bad    *//

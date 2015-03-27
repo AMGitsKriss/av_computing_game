@@ -6,6 +6,7 @@ MouseHandler mouse;
 int transX, transY, tileIndex = 2;
 ColourChanger change;
 TilesChange[] tilesChange;
+boolean spark_canplay = true;
 
 int[][] tiles, interactive;
 String[][] colours;
@@ -26,7 +27,7 @@ void setup(){
   minim = new Minim(this);
   footsteps = minim.loadFile("audio/footsteps.wav");
   slide_door = minim.loadFile("audio/sliding-door.wav");
-  spark = minim.loadFile("audio/spark.wav");
+  spark = minim.loadFile("audio/electric-arcing.aiff");
   //landing = minim.loadFile("audio/thump.wav");
   
   change = new ColourChanger();
@@ -61,6 +62,15 @@ void debug(){
 
 void draw(){
   
+  if(world[player.y/32][player.x/32].type == 3 && spark_canplay){
+    play("spark");
+    spark_canplay = false;
+  }
+  else if(world[player.y/32][player.x/32].type != 3 && !spark_canplay){
+    spark.pause();
+    spark_canplay = true;
+  }
+  
   if(keys.ascii[93]){ 
     LevelSave save = new LevelSave();
   }
@@ -73,6 +83,14 @@ void draw(){
   //Handling the door
   if(mouse.pressed == true && mouse.sX != -1 && world[mouse.sY][mouse.sX].index >= 0 && world[mouse.sY][mouse.sX].col == player.currentCol){
     int temp = mouse.mouseUpdateX();
+    if(temp != 0 && mouse.door_canplay){
+      play("slide_door");
+      mouse.door_canplay = false;
+    }
+    else if(temp == 0 && !mouse.door_canplay){
+      slide_door.pause();
+      mouse.door_canplay = true;
+    }
     if(world[mouse.sY][mouse.sX].index < world[mouse.sY][mouse.sX].img.length-1 && temp > 0){
       world[mouse.sY][mouse.sX].index += temp;
     }
@@ -101,7 +119,6 @@ void draw(){
       int temp = world[y][x].index;
       world[y][x].animate();
       image(world[y][x].img[temp], x*32, y*32);
-      //if(world[y][x].type == 3) play("spark");
         //TODO - Put another (uncoloured) image here if one exists? A decoration layer.
     }
   }
@@ -136,8 +153,12 @@ int drawRange(int _pos, int _var, int _length){
       //slide_door.rewind();
       //notes: use play to start audio at 1 sec
       //can loop with rewind but won't start at 1 sec then
+
     }
-    if(type == "spark") spark.loop();
+    if(type == "spark"){
+      spark.loop();
+      spark.setVolume(0.5);
+    }
     if(type == "landing") landing.loop();
   }
 
