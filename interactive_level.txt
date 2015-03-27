@@ -1,5 +1,15 @@
-WE SHOULD BE IGNORING THIS 	!!!ALL ENTRIES - X before Y!!!	ln 1: Comment | ln 2: y, x pos | ln 3: turn red | ln 4: turn green | ln 5: turn blue
+WE SHOULD BE IGNORING THIS 	!!!ALL ENTRIES - X before Y!!!	ln 1: Comment | ln 2: x, y pos | ln 3: turn red | ln 4: turn green | ln 5: turn blue
 56	125
 53	122	53	123	53	124	53	125	53	126
 0	0
 45	121	45	122
+	Red board makes green button accessible
+79	112
+79	114	79	115	78	116	78	117	78	118	78	119	78	120	78	121	78	122	78	123	78	124	78	125	78	126
+0	0
+0	0
+	Blue board in the vents. Makes blue ceiling green.
+49	112
+0	0
+49	109	50	109	51	109	52	109	53	109	51	110	52	110	51	111
+0	0
