@@ -7,7 +7,7 @@ class Player extends Collision{
   Timer jumpCD; //cooldown on player jumping
   
   int index = 0, speed = 3; //graphic's position in the array & movement speed
-  float vertSpeed = 3, gravity = 0.2; //Gravity ranges from 0.05, to 0.1, to 0.2.
+  float vertSpeed = 3, gravity = 0.1; //Gravity ranges from 0.05, to 0.1, to 0.2.
   boolean moving = false, jumping = false, canplay = true;;
   PVector pos;
   
@@ -101,7 +101,7 @@ class Player extends Collision{
             gravity = 0.2;
             break;
         }
-        //println(gravity);
+        println(gravity);
       }
     }
     
@@ -119,9 +119,15 @@ class Player extends Collision{
     if(colliding("interactive_level")){
       showInteractButton();
       if(keys.ascii[101]){
+        println("click");
         //TODO - FIND WHICH CHANGE WE NEED TO CALL  -  int(x/32), int(y/32)
         for(int i = 0; i < tilesChange.length; i++){
-          if(tilesChange[i].x == x/32 && tilesChange[i].y == y/32){
+          println(tilesChange[i].x);
+          println(tilesChange[i].y);
+          println(x/32);
+          println(y/32);
+          if(tilesChange[i].x == int(x/32) && tilesChange[i].y == int(y/32)){
+            println("inside IF");
             tilesChange[i].update();
             break;
           }
@@ -208,7 +214,7 @@ class Player extends Collision{
     
     //falling?
     if(!colliding("down") && !colliding("horiz_left_down") && !jumping){
-      //println(vertSpeed);
+      println(vertSpeed);
       pos.y -= vertSpeed;
       vertSpeed -= gravity;
     }

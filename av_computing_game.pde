@@ -32,14 +32,13 @@ void setup(){
   
   change = new ColourChanger();
   //declaring characters with posion and image directory
-  player = new Player(12*32, 10*32, "graphics/player");
+  player = new Player(38*32, 125*32, "graphics/player");
   keys = new KeyHandler();
   mouse = new MouseHandler();
   
   //Load the level
   LevelLoad load = new LevelLoad();
-  println("Height: " + world.length);
-  println("Width: " + world[0].length);
+
 
   //create a new file in dir
 //  LevelSave save = new LevelSave();
@@ -148,7 +147,7 @@ int drawRange(int _pos, int _var, int _length){
   void play(String type){
     if(type == "footsteps") footsteps.loop();
     if(type == "slide_door"){
-      //println(slide_door.length());
+      println(slide_door.length());
       //slide_door.loop();
       slide_door.play(1000);
       //slide_door.rewind();
@@ -158,6 +157,7 @@ int drawRange(int _pos, int _var, int _length){
     }
     if(type == "spark"){
       spark.loop();
+      spark.setVolume(0.5);
     }
     if(type == "landing") landing.loop();
   }

@@ -110,6 +110,18 @@ class Tiles {
       case 30:  //0.2
         assignType("graphics/background-tiles", "button", false, false);
         break;
+      case 31:  //quarter grav
+        assignType("graphics/tutorial", "Gquart", false, false);
+        break;
+      case 32:  //half grav
+        assignType("graphics/tutorial", "Ghalf", false, false);
+        break;
+      case 33:  //1 grav
+        assignType("graphics/tutorial", "G1", false, false);
+        break;
+      case 34:  //exit
+        assignType("graphics/background-tiles", "exit", false, false);
+        break;
       
     }
     

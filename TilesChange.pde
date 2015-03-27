@@ -33,6 +33,8 @@ class TilesChange {
       world[temp1][temp2].col = _col; //setting tile colour to _col
       //redrawing the sprites
       PImage[] temp3 = change.spriteArray(_col, world[temp1][temp2].dir, world[temp1][temp2].file);
+      println(world[temp1][temp2].dir);
+      println(world[temp1][temp2].file);
       world[temp1][temp2].img = temp3;
     }
   }
