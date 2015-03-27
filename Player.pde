@@ -8,7 +8,7 @@ class Player extends Collision{
   
   int index = 0, speed = 3; //graphic's position in the array & movement speed
   float vertSpeed = 3, gravity = 0.2; //Gravity ranges from 0.05, to 0.1, to 0.2.
-  boolean moving = false, jumping = false;
+  boolean moving = false, jumping = false, canplay = true;;
   PVector pos;
   
   //Recieves start pos, and folder containing instance's sprites. Allows each instance
@@ -75,6 +75,11 @@ class Player extends Collision{
     mouse.select(nearest);
   }
   
+  //if player walks, plays sound over a loop
+  /*void walk(){
+    footsteps.loop();
+  }*/
+  
   //TODO - This function is a mess. Condesnse it into smaller functions.
   void update(){
 
@@ -135,6 +140,9 @@ class Player extends Collision{
     //If neither A & D, or both A & D are being pressed, do nothing
     if((!keys.ascii[97] && !keys.ascii[100]) || (keys.ascii[97] && keys.ascii[100])){
       moving = false;
+      //stop footsteps sound when no key is pressed
+      canplay = true;
+      footsteps.pause();
     }
     
     //Move left on A
@@ -142,6 +150,10 @@ class Player extends Collision{
       moving = true;
       pos.x -= speed;
       lastPressed = 97;
+      
+      //play footstep sound
+      if(canplay) play("footsteps");
+      canplay = false;
     }
     
     //Move right on D
@@ -149,6 +161,18 @@ class Player extends Collision{
       moving = true;
       pos.x += speed;
       lastPressed = 100;
+      
+      //play footstep sound
+      if(canplay) play("footsteps");
+      canplay = false;
+    }
+    
+    //if A or D and space bar is pressed, no footstep sound
+    else if(keys.ascii[97] && keys.ascii[32] || keys.ascii[100] && keys.ascii[32]){
+      println("working");
+      //footsteps sound will not play
+      canplay = true;
+      footsteps.pause();
     }
     
         /*---------------- COLLISION LOGIC --------------------*/

@@ -1,3 +1,5 @@
+import ddf.minim.*;
+
 Player player; 
 KeyHandler keys;
 MouseHandler mouse;
@@ -9,6 +11,9 @@ int[][] tiles, interactive;
 String[][] colours;
 Tiles[][] world;
 
+Minim minim;
+AudioPlayer footsteps, slide_door, spark, landing;
+
   //TODO - There's some minor lag when app first starts. Can we find the source/reduce it?
   
   //TODO - Blast door. 01 is closed. 07 is half open. 13 is fully open. The door index needs to impact collision detection. 
@@ -17,6 +22,12 @@ void setup(){
   //Smaller on low-res. Larger on high res.
   if(displayWidth > 1300) size(1280, 720);
   else size(800, 450);
+  
+  minim = new Minim(this);
+  footsteps = minim.loadFile("audio/footsteps.wav");
+  slide_door = minim.loadFile("audio/sliding-door.wav");
+  spark = minim.loadFile("audio/spark.wav");
+  //landing = minim.loadFile("audio/thump.wav");
   
   change = new ColourChanger();
   //declaring characters with posion and image directory
@@ -90,6 +101,7 @@ void draw(){
       int temp = world[y][x].index;
       world[y][x].animate();
       image(world[y][x].img[temp], x*32, y*32);
+      //if(world[y][x].type == 3) play("spark");
         //TODO - Put another (uncoloured) image here if one exists? A decoration layer.
     }
   }
@@ -113,6 +125,21 @@ int drawRange(int _pos, int _var, int _length){
   else if(value > _length-1) value = _length-1;
   return value;
 }
+
+  //play sounds depending on what type it is
+  void play(String type){
+    if(type == "footsteps") footsteps.loop();
+    if(type == "slide_door"){
+      println(slide_door.length());
+      //slide_door.loop();
+      slide_door.play(1000);
+      //slide_door.rewind();
+      //notes: use play to start audio at 1 sec
+      //can loop with rewind but won't start at 1 sec then
+    }
+    if(type == "spark") spark.loop();
+    if(type == "landing") landing.loop();
+  }
 
 void mousePressed(){
   mouse.mousePressed();

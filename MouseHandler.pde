@@ -1,7 +1,7 @@
 class MouseHandler{
   
   int mX, mY, sX,sY;
-  boolean pressed = false;
+  boolean pressed = false, door_canplay = true;
   
   MouseHandler(){
     //constructor
@@ -28,12 +28,18 @@ class MouseHandler{
     mX = mouseX;
     mY = mouseY;
     pressed = true;
+    
+    //play slide_door sound
+    if(door_canplay) play("slide_door");
+    door_canplay = false;
   }
   
   void mouseReleased(){
     mX = 0;
     mY = 0;
     pressed = false;
+    door_canplay = true;
+    slide_door.pause();
   }
   
   int mouseUpdateX(){
