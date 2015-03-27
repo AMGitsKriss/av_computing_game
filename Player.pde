@@ -101,7 +101,7 @@ class Player extends Collision{
             gravity = 0.2;
             break;
         }
-        println(gravity);
+        //println(gravity);
       }
     }
     
@@ -208,7 +208,7 @@ class Player extends Collision{
     
     //falling?
     if(!colliding("down") && !colliding("horiz_left_down") && !jumping){
-      println(vertSpeed);
+      //println(vertSpeed);
       pos.y -= vertSpeed;
       vertSpeed -= gravity;
     }
