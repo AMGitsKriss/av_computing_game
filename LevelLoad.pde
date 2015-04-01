@@ -2,10 +2,15 @@ class LevelLoad{
   
   LevelLoad(){
     //load level information from text files
+    println("Parsing Level Data");
     parseLevelData();
+     
     //using this data to create the world
+    println("Declaring World");
     declareWorld();
+     
     //loading a list/array of world-changing interactions
+    println("Loading changables");
     declareChangables();
   }
   
@@ -13,14 +18,18 @@ class LevelLoad{
   void parseLevelData(){
     //loading map arrays
     String[] temp_tiles = loadStrings("map_tiles.txt");
+     println("Loading map_tiles.txt");
     String[] temp_colours = loadStrings("map_colours.txt");
+     println("Loading map_colours.txt");
 //    println(temp_colours);
     String[] temp_interactive = loadStrings("interactive_level.txt");
+     println("Loading interactive_level.txt");
   
     //declaring relevant 2D arrays
     tiles = new int[temp_tiles.length][];
     colours = new String[temp_colours.length][];
     interactive = new int[temp_interactive.length][];
+     println("World Arrays Declared");
     
     //dumping values into the arrays. As they should all be the same size
     //we can stick them in the same loop.
@@ -28,9 +37,11 @@ class LevelLoad{
       tiles[i] = int(split(temp_tiles[i], TAB));
       colours[i] = split(temp_colours[i], TAB);
     }
+     println("Dumping tiles and colours into arrays");
     for(int i = 0; i < temp_interactive.length; i++){
       interactive[i] = int(split(temp_interactive[i], TAB));
     }
+     println("Dumping interactivity into array");
   }
   
   void declareChangables(){
@@ -39,11 +50,17 @@ class LevelLoad{
     for(int i = 0, j = 0; i < interactive.length; i+=5, j++){
       tilesChange[j] = new TilesChange(interactive[i+1][0], interactive [i+1][1], interactive[i+2], interactive[i+3], interactive[i+4]);
     }
+     println("Combobulating interaction array");
   }
   
   //-----Tiles(TILE TYPE, TILE COLOUR)-----
   void declareWorld(){
+    
+    //TODO - Load tiles immediately around the player first, then expand outwards to expediate loading?
+    
     world = new Tiles[tiles.length][tiles[0].length];
+    println("Condensing arrays into world");
+    
     for(int y = 0; y < world.length; y++){
       for(int x = 0; x < world[y].length; x++){
         
@@ -64,7 +81,9 @@ class LevelLoad{
   
         world[y][x] = new Tiles(tiles[y][x], temp);
       }
+      println(y + " of " + world.length);
     }
+     println("Condensing arrays into world");
   }
   
 }

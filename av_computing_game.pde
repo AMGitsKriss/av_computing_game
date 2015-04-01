@@ -23,22 +23,31 @@ void setup(){
   //Smaller on low-res. Larger on high res.
   if(displayWidth > 1300) size(1280, 720);
   else size(800, 450);
-  
+  println("Size Defined");
+
   minim = new Minim(this);
+  println("Minim Starting");
+  
   footsteps = minim.loadFile("audio/footsteps.wav");
   slide_door = minim.loadFile("audio/sliding-door.wav");
   spark = minim.loadFile("audio/electric-arcing.aiff");
   //landing = minim.loadFile("audio/thump.wav");
+  println("Audio Loaded");
   
   change = new ColourChanger();
+  println("Colour Changer");
+  
   //declaring characters with posion and image directory
   player = new Player(38*32, 125*32, "graphics/player");
+  println("Player");
+  
   keys = new KeyHandler();
   mouse = new MouseHandler();
+  println("Controls");
   
   //Load the level
+  println("Loading Level......");
   LevelLoad load = new LevelLoad();
-
 
   //create a new file in dir
 //  LevelSave save = new LevelSave();
@@ -147,7 +156,7 @@ int drawRange(int _pos, int _var, int _length){
   void play(String type){
     if(type == "footsteps") footsteps.loop();
     if(type == "slide_door"){
-      println(slide_door.length());
+//      println(slide_door.length());
       //slide_door.loop();
       slide_door.play(1000);
       //slide_door.rewind();
@@ -157,7 +166,7 @@ int drawRange(int _pos, int _var, int _length){
     }
     if(type == "spark"){
       spark.loop();
-      spark.setVolume(0.5);
+//      spark.setVolume(0.5);
     }
     if(type == "landing") landing.loop();
   }
