@@ -89,6 +89,8 @@ void draw(){
   
   //TODO - Make sure the nearest foor the the mouse (That's on-screen) is controlled
   
+  //TODO - Stick audio in it's own thing.
+  
   //Handling the door
   if(mouse.pressed == true && mouse.sX != -1 && world[mouse.sY][mouse.sX].index >= 0 && world[mouse.sY][mouse.sX].col == player.currentCol){
     int temp = mouse.mouseUpdateX();
