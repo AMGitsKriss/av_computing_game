@@ -8,7 +8,7 @@ class Player extends Collision{
   
   int index = 0, speed = 3; //graphic's position in the array & movement speed
   float vertSpeed = 3, gravity = 0.1; //Gravity ranges from 0.05, to 0.1, to 0.2.
-  boolean moving = false, jumping = false, canplay = true;;
+  boolean moving = false, jumping = false, canplay = true;
   PVector pos;
   
   //Recieves start pos, and folder containing instance's sprites. Allows each instance
