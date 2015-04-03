@@ -21,7 +21,6 @@ class LevelLoad{
      println("Loading map_tiles.txt");
     String[] temp_colours = loadStrings("map_colours.txt");
      println("Loading map_colours.txt");
-//    println(temp_colours);
     String[] temp_interactive = loadStrings("interactive_level.txt");
      println("Loading interactive_level.txt");
   

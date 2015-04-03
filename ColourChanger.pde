@@ -27,6 +27,7 @@ class ColourChanger {
   PImage[] spriteArray(String _col, String _dir, String _file){
     
     color tempCol;
+    //loading the images
     PImage[] sprites = loadFiles(_dir, _file); 
     
     if (_col == "red")          tempCol = redInverter;
@@ -34,7 +35,7 @@ class ColourChanger {
     else                        tempCol = blueInverter;
 
     for(int i = 0; i < sprites.length; i++){
-      colourChange(sprites[i], tempCol); //applying a blue change
+      colourChange(sprites[i], tempCol); //applying a colour change for each image
     }
     return sprites;
   }

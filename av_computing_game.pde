@@ -58,7 +58,7 @@ void setup(){
 
 void debug(){
   fill(255);
-  String[] debugText = {"U + click to skip | I =red, O = green, P = blue, [ = default | ] to save map",
+  String[] debugText = {"U + click to skip | I =red, O = green, P = blue, [ = default | ] to save map. Hold TAB to draw tiles, scroll to select tile.",
                         player.currentCol, 
                         "MOUSE | Y: " + (mouseY-transY)/32 + "    X: " + (mouseX-transX)/32, 
                         "PLAYER | Y: " + int(player.pos.y)/32 + "    X: " + int(player.pos.x)/32,
@@ -83,7 +83,7 @@ void draw(){
   if(keys.ascii[93]){ 
     LevelSave save = new LevelSave();
   }
-  background(50);
+  background(10);
   pushMatrix();
   noStroke(); 
   
